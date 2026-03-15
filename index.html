@@ -71,11 +71,11 @@
 
   .tagline {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    color: #777;
+    font-size: 12px;
+    color: #555;
     font-weight: 400;
     margin-bottom: 28px;
-    letter-spacing: 0;
+    letter-spacing: 0.01em;
   }
 
   /* ── Bio ── */
@@ -83,29 +83,27 @@
     width: 100%;
     max-width: var(--max);
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
   }
   .bio-headline {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    margin-bottom: 10px;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
   }
   .bio-sub {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    color: #666;
+    font-size: 12px;
+    color: #555;
     line-height: 1.6;
     font-weight: 400;
   }
 
   /* ── Social icons ── */
   .socials {
-    width: 100%;
-    max-width: var(--max);
     display: flex;
     align-items: center;
     gap: 20px;
@@ -315,6 +313,44 @@
     background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1a1a 100%);
   }
 
+  /* ── Kit form overrides ── */
+  .email-block .formkit-form { background: transparent !important; border: none !important; padding: 0 !important; max-width: 100% !important; }
+  .email-block .seva-fields.formkit-fields {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+  .email-block .formkit-field { flex: 1 !important; margin-bottom: 0 !important; }
+  .email-block .formkit-input {
+    background: #0d0d0d !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 100px !important;
+    color: #fff !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 12px !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+  }
+  .email-block .formkit-input::-webkit-input-placeholder { color: #444 !important; opacity: 1 !important; }
+  .email-block .formkit-input::placeholder { color: #444 !important; opacity: 1 !important; }
+  .email-block .formkit-input:focus { border-color: #444 !important; outline: none !important; }
+  .email-block .formkit-submit {
+    flex: 0 0 auto !important;
+    background: #fff !important;
+    border-radius: 100px !important;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
+    width: auto !important;
+  }
+  .email-block .formkit-submit > span { color: #000 !important; padding: 14px 22px !important; }
+  .email-block .formkit-submit:hover > span { background: rgba(0,0,0,0.08) !important; }
+  .email-block .formkit-powered-by-convertkit-container { display: none !important; }
+  .email-block .formkit-alert { background: #1a1a1a !important; border-color: #333 !important; color: #aaa !important; font-size: 12px !important; }
+
   /* ── Footer ── */
   footer {
     margin-top: 48px;
@@ -342,15 +378,15 @@
     </svg>
   </div>
 
-  <p class="tagline">Full Stack Creative. Brand builder.</p>
+  <p class="tagline">Full Stack Creative</p>
 
-  <!-- Bio (left-aligned like Mat's) -->
+  <!-- Bio -->
   <div class="bio">
     <p class="bio-headline">Helping creators design premium personal brands and the content system to amplify it.</p>
     <p class="bio-sub">Brand strategy · Cinematic content · Systems that attract clients.</p>
   </div>
 
-  <!-- Social icons (below bio) -->
+  <!-- Social icons -->
   <div class="socials">
     <a href="https://www.instagram.com/watch.gabe/" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -363,12 +399,6 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
         <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
-      </svg>
-    </a>
-    <a href="mailto:gabe@watchgabe.com" aria-label="Email">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="4" width="20" height="16" rx="2"/>
-        <path d="M2 7l10 7 10-7"/>
       </svg>
     </a>
   </div>
@@ -411,13 +441,24 @@
 
   </div>
 
-  <!-- Email signup — connect to Kit: replace YOUR_FORM_ID in the action URL -->
+  <!-- Email signup — Kit form -->
   <div class="section-block email-block">
     <p class="email-title">My Email List</p>
     <p class="email-desc">Brand tips, content insights, and behind-the-scenes.<br>No spam. New email every week.</p>
-    <form class="email-form" action="https://app.kit.com/forms/YOUR_FORM_ID/subscriptions" method="post" target="_blank">
-      <input type="email" name="email_address" placeholder="Email address" required>
-      <button type="submit">Subscribe</button>
+    <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+    <form action="https://app.kit.com/forms/6737505/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="6737505" data-uid="ce80dc8829" data-format="inline" data-version="5" min-width="400 500 600 700 800">
+      <div data-style="clean">
+        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email">
+          </div>
+          <button data-element="submit" class="formkit-submit formkit-submit">
+            <div class="formkit-spinner"><div></div><div></div><div></div></div>
+            <span>Subscribe</span>
+          </button>
+        </div>
+      </div>
     </form>
   </div>
 
@@ -440,12 +481,13 @@
         </svg>
       </a>
     </div>
-    <!-- Placeholder grid — replace with Behold.so widget script once connected -->
-    <div class="insta-grid">
-      <div class="insta-grid-item"><div class="insta-placeholder"></div></div>
-      <div class="insta-grid-item"><div class="insta-placeholder"></div></div>
-      <div class="insta-grid-item"><div class="insta-placeholder"></div></div>
-    </div>
+    <behold-widget feed-id="FoDT99pcHKBeSirDUTSK"></behold-widget>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
   </div>
 
   <footer>© 2026 @WATCH.GABE. All rights reserved.</footer>
