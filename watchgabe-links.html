@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabe Harris — Watch Gabe</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d0d0d;
+    --card: #181818;
+    --border: #242424;
+    --text: #ffffff;
+    --dim: #888888;
+    --dimmer: #444444;
+    --blue: #0095F6;
+    --max: 480px;
+  }
+
+  body {
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, #272727 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: var(--text);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 52px 20px 72px;
+  }
+
+  /* ── Profile ── */
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .name-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .name {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .check {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: var(--dim);
+    font-weight: 400;
+    margin-bottom: 28px;
+    letter-spacing: 0;
+  }
+
+  /* ── Bio ── */
+  .bio {
+    width: 100%;
+    max-width: var(--max);
+    margin-bottom: 32px;
+  }
+  .bio-headline {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .bio-body {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    width: 100%;
+    max-width: var(--max);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    margin-top: 8px;
+  }
+  .section-label span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--dimmer);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-label::before { display: none; }
+
+  /* ── Image cards ── */
+  .cards {
+    width: 100%;
+    max-width: var(--max);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .img-card {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, border-color 0.2s;
+  }
+  .img-card:hover { transform: translateY(-2px); border-color: #3a3a3a; }
+
+  .img-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* gradient overlay */
+  .img-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 20%,
+      rgba(0,0,0,0.55) 60%,
+      rgba(0,0,0,0.88) 100%
+    );
+  }
+
+  .img-card-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 18px 18px 16px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .img-card-text { flex: 1; min-width: 0; }
+  .img-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .img-card-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .img-card-btn {
+    flex-shrink: 0;
+    padding: 7px 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .img-card:hover .img-card-btn {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 52px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #2e2e2e;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Profile -->
+  <div class="avatar">
+    <img src="458590589_1534654820461228_4076101104222827177_n.jpg" alt="Gabe Harris">
+  </div>
+
+  <div class="name-row">
+    <span class="name">Gabe Harris</span>
+    <!-- Instagram-blue verified badge -->
+    <svg class="check" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 3L24.2 8.4L31 6.8L31 14L37.6 17.2L34.8 24L37.6 30.8L31 33L31 40.2L24.2 37.6L20 43L15.8 37.6L9 40.2L9 33L2.4 30.8L5.2 24L2.4 17.2L9 14L9 6.8L15.8 8.4L20 3Z" fill="#0095F6"/>
+      <path d="M13 20.5L18 25.5L27 16" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <p class="tagline">Watch Gabe &nbsp;·&nbsp; Brand Builder</p>
+
+  <!-- Bio -->
+  <div class="bio">
+    <p class="bio-headline">I help creators build cinematic personal brands.</p>
+    <p class="bio-body">From brand strategy to content systems — I teach creators how to design, launch, and grow a brand that looks premium and attracts clients.</p>
+  </div>
+
+  <!-- Section label -->
+  <div class="section-label">
+    <span>Links</span>
+  </div>
+
+  <!-- Image cards -->
+  <div class="cards">
+
+    <!-- 1. Join FSCreative -->
+    <a href="#" class="img-card">
+      <img class="img-card-bg" src="rework_the_first_image_so_that_it_shows_a_little_bit_more_personality_you_can_use_the_screenshots_f_k0zuj8iojehmhinhng9j_1.jpeg" alt="Join FSCreative">
+      <div class="img-card-body">
+        <div class="img-card-text">
+          <div class="img-card-title">Join FSCreative</div>
+          <div class="img-card-desc">A step-by-step system to design and launch your personal brand.</div>
+        </div>
+        <span class="img-card-btn">Join</span>
+      </div>
+    </a>
+
+    <!-- 2. Work 1-1 With Me -->
+    <a href="#" class="img-card">
+      <img class="img-card-bg" src="create_a_mockup_like_the_one_attached_but_make_it_for_my_brand_launch_checklist_use_the_screenshots_kadesft7zrbsnv6n6czw_1.png" alt="Work 1-1 With Me">
+      <div class="img-card-body">
+        <div class="img-card-text">
+          <div class="img-card-title">Work 1-1 With Me</div>
+          <div class="img-card-desc">Let's build your brand together to get you new clients.</div>
+        </div>
+        <span class="img-card-btn">Apply</span>
+      </div>
+    </a>
+
+    <!-- 3. 30 Day Brand Sprint -->
+    <a href="#" class="img-card">
+      <img class="img-card-bg" src="remove_all_the_copy_and_the_logo_and_make_the_mockups_fill_the_entire_screen_all_it_is_is_a_tight-l_emur3dflq0m6bzut4lv7_1.png" alt="30 Day Brand Sprint">
+      <div class="img-card-body">
+        <div class="img-card-text">
+          <div class="img-card-title">30 Day Brand Sprint</div>
+          <div class="img-card-desc">A daily insight on how to build and launch your brand aesthetic.</div>
+        </div>
+        <span class="img-card-btn">Join</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>© 2026 Watch Gabe. All rights reserved.</footer>
+
+</body>
+</html>
