@@ -10,8 +10,12 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+  /* ── Shared ── */
+  :root { --max: 460px; }
+
   /* ── Dark mode (default) ── */
-  :root {
+  :root,
+  [data-mode="dark"] {
     --bg:          #071a12;
     --card:        #0a2118;
     --border:      #122b1e;
@@ -22,11 +26,10 @@
     --input-bg:    #05120d;
     --btn-bg:      #ffffff;
     --btn-text:    #071a12;
-    --social:      rgba(255,255,255,0.3);
+    --social:      rgba(255,255,255,0.30);
     --foot:        rgba(255,255,255,0.15);
     --join-bg:     rgba(238,102,62,0.08);
     --join-border: rgba(238,102,62,0.28);
-    --max: 460px;
   }
 
   /* ── Light mode ── */
