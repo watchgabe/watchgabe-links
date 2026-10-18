@@ -8,6 +8,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Lemon';
+    src: url('fonts/Lemon-Bold.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Lemon';
+    src: url('fonts/Lemon-Black.woff2') format('woff2');
+    font-weight: 900; font-style: normal; font-display: swap;
+  }
+
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   /* ── Shared ── */
@@ -16,20 +27,20 @@
   /* ── Dark mode (default) ── */
   :root,
   [data-mode="dark"] {
-    --bg:          #061410;
-    --card:        #091a14;
-    --border:      #0f261c;
+    --bg:          #2E1118;
+    --card:        #3A1620;
+    --border:      #4A1D29;
     --text:        #ffffff;
     --sub:         rgba(255,255,255,0.38);
     --sub-bright:  rgba(255,255,255,0.55);
-    --orange:      #ee663e;
-    --input-bg:    #040e09;
+    --orange:      #FE4720;
+    --input-bg:    #1E0A10;
     --btn-bg:      #ffffff;
-    --btn-text:    #071a12;
+    --btn-text:    #2E1118;
     --social:      rgba(255,255,255,0.30);
     --foot:        rgba(255,255,255,0.15);
-    --join-bg:     rgba(238,102,62,0.08);
-    --join-border: rgba(238,102,62,0.28);
+    --join-bg:     rgba(254,71,32,0.08);
+    --join-border: rgba(254,71,32,0.28);
   }
 
   /* ── Light mode ── */
@@ -152,11 +163,13 @@
   /* ── Bio ── */
   .bio { width: 100%; max-width: var(--max); margin-bottom: 20px; text-align: center; }
   .bio-headline {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 18px; font-weight: 700;
+    font-family: 'Lemon', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 56px; font-weight: 700;
     color: var(--text);
-    line-height: 1.35; letter-spacing: -0.02em;
-    margin-bottom: 8px; transition: color 0.35s;
+    line-height: 0.98; letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 18px; transition: color 0.35s;
+    text-wrap: balance;
   }
   .bio-sub {
     font-family: 'Space Mono', monospace;
@@ -174,6 +187,117 @@
 
   /* ── Cards ── */
   .cards { width: 100%; max-width: var(--max); display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+
+  /* ── Featured challenge card (Startup Mom pattern) ── */
+  .feature-card {
+    display: block;
+    background: var(--orange);
+    color: #2E1118;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    margin-bottom: 14px;
+    transition: transform 0.25s;
+  }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-top { padding: 20px 20px 16px; text-align: center; color: #2E1118; }
+  .feature-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #2E1118;
+    margin-bottom: 10px;
+  }
+  .feature-eyebrow::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+    background: #2E1118;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .feature-countdown {
+    display: flex; justify-content: center; align-items: baseline;
+    gap: 10px; margin-bottom: 4px;
+    font-family: 'Lemon', 'Helvetica Neue', sans-serif;
+    font-weight: 900;
+    color: #2E1118;
+  }
+  .feature-countdown .num {
+    font-size: 46px; letter-spacing: 0; line-height: 1;
+    min-width: 1.6ch; text-align: center;
+  }
+  .feature-countdown .sep {
+    font-size: 36px; opacity: 0.4; line-height: 1;
+  }
+  .feature-cd-labels {
+    display: flex; justify-content: center; gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #2E1118; opacity: 0.65;
+    margin-bottom: 16px;
+  }
+  .feature-cd-labels span {
+    min-width: 1.6ch; text-align: center;
+  }
+  .feature-cd-labels .spacer {
+    min-width: 0; width: 16px;
+  }
+  .feature-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #2E1118 radial-gradient(ellipse at center, rgba(254,71,32,0.08), transparent 60%);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 4px;
+    overflow: hidden;
+  }
+  .feature-image img {
+    width: 72px; height: 72px; opacity: 0.9;
+  }
+  .feature-bottom {
+    background: #F7EFE2;
+    color: #2E1118;
+    padding: 20px 20px 22px;
+    text-align: center;
+  }
+  .feature-eyebrow-2 {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .feature-title {
+    font-family: 'Lemon', 'Helvetica Neue', sans-serif;
+    font-size: 32px; font-weight: 700;
+    letter-spacing: 0.01em; line-height: 1;
+    text-transform: uppercase;
+    color: #2E1118;
+    margin-bottom: 10px;
+    text-wrap: balance;
+  }
+  .feature-desc {
+    font-size: 13px; line-height: 1.5;
+    color: #6b4a52;
+    max-width: 320px;
+    margin: 0 auto 14px;
+  }
+  .feature-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px;
+    border: 1.5px solid #2E1118;
+    border-radius: 999px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #2E1118;
+    transition: background 0.2s, color 0.2s;
+  }
+  .feature-card:hover .feature-cta {
+    background: #2E1118; color: var(--orange);
+  }
 
   .card {
     display: flex; align-items: center; gap: 14px;
@@ -339,7 +463,7 @@
 
   <!-- Bio -->
   <div class="bio">
-    <p class="bio-headline">Helping creators design premium personal brands and the content system to amplify it.</p>
+    <p class="bio-headline">Personal branding for creative overthinkers</p>
     <p class="bio-sub">Brand strategy · Cinematic content · Systems that attract clients.</p>
   </div>
 
@@ -362,6 +486,35 @@
 
   <!-- Link cards -->
   <div class="cards">
+
+    <!-- ─── FEATURED: Join my next challenge ─── -->
+    <a href="https://fscreative.live/" class="feature-card" target="_blank">
+      <div class="feature-top">
+        <div class="feature-eyebrow">Doors close in</div>
+        <div class="feature-countdown">
+          <span class="num" id="fc-d">—</span>
+          <span class="sep">:</span>
+          <span class="num" id="fc-h">—</span>
+          <span class="sep">:</span>
+          <span class="num" id="fc-m">—</span>
+          <span class="sep">:</span>
+          <span class="num" id="fc-s">—</span>
+        </div>
+        <div class="feature-cd-labels">
+          <span>Days</span><span class="spacer"></span>
+          <span>Hrs</span><span class="spacer"></span>
+          <span>Min</span><span class="spacer"></span>
+          <span>Sec</span>
+        </div>
+        <div class="feature-image"><img src="Icon Orange@4x.png" alt="FSCreative"></div>
+      </div>
+      <div class="feature-bottom">
+        <div class="feature-eyebrow-2">✱ Cohort 2 · Starts Nov 9</div>
+        <div class="feature-title">Join My Next Challenge</div>
+        <div class="feature-desc">30 days. 1M views, guaranteed. Build your brand, build your system, blow it the f*ck up.</div>
+        <span class="feature-cta">Claim your spot →</span>
+      </div>
+    </a>
 
     <a href="https://fscreative.live/" class="card card-join" target="_blank">
       <div class="card-thumb thumb-fsc">
@@ -480,6 +633,31 @@
     requestAnimationFrame(drawGrain);
   }
   drawGrain();
+
+  /* Featured-card countdown · doors close Fri Nov 6, 2026 11:59 PM CT */
+  (function () {
+    const target = new Date('2026-11-06T23:59:00-06:00').getTime();
+    const d = document.getElementById('fc-d');
+    const h = document.getElementById('fc-h');
+    const m = document.getElementById('fc-m');
+    const s = document.getElementById('fc-s');
+    if (!d) return;
+    const pad = n => String(Math.max(0, n)).padStart(2, '0');
+    function tick() {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        d.textContent = '00'; h.textContent = '00';
+        m.textContent = '00'; s.textContent = '00';
+        return;
+      }
+      d.textContent = pad(Math.floor(diff / 86400000));
+      h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+      m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+      s.textContent = pad(Math.floor((diff % 60000) / 1000));
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
 </script>
 </body>
 </html>
